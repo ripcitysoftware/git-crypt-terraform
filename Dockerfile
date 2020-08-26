@@ -1,4 +1,8 @@
 FROM hashicorp/terraform:0.12.28
-MAINTAINER chris.maki@ripcitysoftware.com
+LABEL maintainer "chris.maki@ripcitysoftware.com"
 
-RUN apk add git-crypt curl --update
+COPY session.sh /usr/bin/session.sh
+RUN apk add git-crypt curl --update && \
+    chmod +x /usr/bin/session.sh
+
+ENTRYPOINT [ "session.sh" ]
