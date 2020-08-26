@@ -11,3 +11,5 @@ RESPONSE=$(curl -X POST -H "Content-Type: application/json" -d "$DATA" ${CLOUDMA
 export AWS_ACCESS_KEY_ID=$(echo $RESPONSE | jq .aws_access_key_id)
 export AWS_SECRET_ACCESS_KEY=$(echo $RESPONSE | jq .aws_secret_access_key)
 export AWS_SESSION_TOKEN=$(echo $RESPONSE | jq .aws_session_token)
+
+exec "$@"
