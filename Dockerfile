@@ -5,4 +5,5 @@ COPY session.sh /usr/bin/session.sh
 RUN apk add git-crypt curl jq --update && \
     chmod +x /usr/bin/session.sh
 
-CMD /usr/bin/session.sh
+ENTRYPOINT ["/usr/bin/session.sh"]
+
