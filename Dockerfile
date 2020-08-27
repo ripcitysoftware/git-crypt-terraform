@@ -6,4 +6,3 @@ RUN apk add git-crypt curl jq --update && \
     chmod +x /usr/bin/session.sh
 
 ENTRYPOINT ["/usr/bin/session.sh"]
-

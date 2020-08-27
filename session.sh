@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
 [[ ! -z "$DEBUG" ]] && set -x
-set -x
 
 DATA="$(jq -n '{org_id: env.CM_ORG_ID, project_id: env.CM_PROJECT_ID, token: env.CM_TOKEN}')"
 RESPONSE=$(curl -X POST -H "Content-Type: application/json" -d "$DATA" ${CLOUDMANAGER_API}/integrations/aws/session 2>/dev/null)
