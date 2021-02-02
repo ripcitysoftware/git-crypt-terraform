@@ -10,7 +10,7 @@
 [[ ! -z "$DEBUG" ]] && set -x
 
 validate_plan() {
-    echo "Running CloudPolicy™ validation..."
+    echo "Validating your changes against CloudPolicies"
 
     URL="${CM_VALIDATION_API}/cloudpolicies/${CM_PROJECT_ID}"
     DATA="$(terraform show -json plan.tfplan)"
