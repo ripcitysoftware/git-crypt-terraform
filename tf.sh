@@ -20,7 +20,7 @@ validate_plan() {
     if [ ! $? -eq 0 ]; then
         echo -e "\n\nYour CloudPolicy validation failed!\n\n"
         echo -e "For more details or to request a resolution visit:\n"
-        VALIDATION_URL = $(echo $RESPONSE | jq '.validation_url')
+        VALIDATION_URL="$(echo $RESPONSE | jq '.validation_url')"
         echo -e "\n\t$VALIDATION_URL"
         exit 1
     fi
