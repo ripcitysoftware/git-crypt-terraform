@@ -25,7 +25,7 @@ validate_plan() {
         exit 1
     fi
 
-    echo -e "\n\nYour planned changes pass CloudPolicy validation!"
+    echo -e "\n\nYour planned changes pass CloudPolicy validation!\n"
 }
 
 terraform "$@"
