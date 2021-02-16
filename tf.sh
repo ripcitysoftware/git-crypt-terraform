@@ -34,5 +34,5 @@ validate_plan() {
 terraform "$@"
 
 if [[ "$1" = "plan" ]]; then
-    validate_plan
+    [[ ! -z "$SKIP_VALIDATION" ]] && validate_plan
 fi
