@@ -7,6 +7,8 @@
 #
 ###
 
+set -e
+
 [[ ! -z "$DEBUG" ]] && set -x
 
 validate_plan() {
