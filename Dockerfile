@@ -1,4 +1,4 @@
-FROM hashicorp/terraform:0.13.5
+FROM hashicorp/terraform:0.14.6
 LABEL maintainer "chris.maki@ripcitysoftware.com"
 
 COPY session.sh /usr/bin/session.sh
