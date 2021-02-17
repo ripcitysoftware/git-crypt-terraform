@@ -15,8 +15,8 @@ validate_plan() {
     echo "Validating your changes against CloudPolicies"
 
     URL="${CM_VALIDATION_API}/cloudpolicies/${CM_PROJECT_ID}"
-    DATA="$(terraform show -json plan.tfplan)"
-    RESPONSE=$(curl -X POST -H "Content-Type: application/json" -d "{\"state\": $DATA}" $URL 2>/dev/null)
+    terraform show -json plan.tfplan | jq '. | {state: .}' >plan.json
+    RESPONSE=$(curl -X POST -H "Content-Type: application/json" -d @plan.json $URL 2>/dev/null)
     test $(echo $RESPONSE | jq '.summary.valid') = 'true'
 
     if [ ! $? -eq 0 ]; then
@@ -34,7 +34,7 @@ validate_plan() {
 terraform "$@"
 
 if [[ "$1" = "plan" ]]; then
-    if [[ ! -z "$SKIP_VALIDATION" ]]; then
+    if [[ -z "$SKIP_VALIDATION" ]]; then
         validate_plan
     fi
 fi
